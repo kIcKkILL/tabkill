@@ -4,30 +4,30 @@ var queryinfo = {
 	title : "placeholder",
 };
 
-function killtabs(placeholder) {
+function killTabs(placeholder) {
 	chrome.storage.sync.get(["rawtitles","rawurls"],function(rawrules) {
 		var titles = rawrules["rawtitles"].split('\n');
 		var urls = rawrules["rawurls"].split('\n');
-		for (var i = 0; i < titles.length; i++) {
+		for (i in titles) {
 			queryinfo.title = titles[i];
-			chrome.tabs.query(queryinfo,dokill);
+			chrome.tabs.query(queryinfo,doKill);
 		}
 		delete queryinfo.title;
-		for (var i = 0; i < urls.length; i++) {
+		for (i in urls) {
 			queryinfo.url = urls[i];
-			chrome.tabs.query(queryinfo,dokill);
+			chrome.tabs.query(queryinfo,doKill);
 		}
 	});
 }
 
-function dokill(tabs) {
+function doKill(tabs) {
 	var tabid_array = new Array();
-	for (var i = 0; i < tabs.length; i++) {
+	for (i in tabs) {
 		tabid_array.push(tabs[i].id);
 	}
 	chrome.tabs.remove(tabid_array);
 }
 
 
-chrome.browserAction.onClicked.addListener(killtabs);
+chrome.browserAction.onClicked.addListener(killTabs);
 

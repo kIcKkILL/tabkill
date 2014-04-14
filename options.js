@@ -2,7 +2,7 @@
 var default_title = "* - Google Search";
 var default_url = "*://www.google.*/search*\n*://*.bing.com/search?q=*";
 
-function saverule(e) {
+function saveRule(e) {
 	var rawtitles = document.getElementById("titles").value;
 	var rawurls = document.getElementById("urls").value;
 	chrome.storage.sync.set({'rawtitles' : rawtitles , 'rawurls' : rawurls}, function() {
@@ -10,11 +10,11 @@ function saverule(e) {
 	});
 }
 
-function defaultrule(e) {
+function defaultRule(e) {
 	// apply default rules
 	document.getElementById("titles").value = default_title;
 	document.getElementById("urls").value = default_url;
-	saverule(e);
+	saveRule(e);
 }
 
 // When options page has finished loading
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	chrome.storage.sync.get(["rawtitles","rawurls"],function(rawrules) {
 		// When first run, apply default rule
 		if (chrome.runtime.lastError) {
-			defaultrule(null);
+			defaultRule(null);
 			return;
 		}
 		var rawtitles = rawrules["rawtitles"];
@@ -32,6 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		document.getElementById("urls").value = rawurls;
 	});
 	// Register button click handler
-	document.querySelector('#savebut').addEventListener('click', saverule);
-	document.querySelector('#defaultbut').addEventListener('click', defaultrule);
+	document.querySelector('#savebut').addEventListener('click', saveRule);
+	document.querySelector('#defaultbut').addEventListener('click', defaultRule);
 });
