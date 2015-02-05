@@ -1,23 +1,23 @@
 {
-	"manifest_version": 2,
+    "manifest_version": 2,
 
-	"name": "TabKill",
-	"description": "Kill tabs that match customized rules",
-	"version": "1.0",
+    "name": "TabKill",
+    "description": "Kill tabs that match customized rules",
+    "version": "1.0",
 
-	"background": {
-		"persistent": false,
-		"scripts": ["background.js"]
-	},
+    "background": {
+        "persistent": false,
+        "scripts": ["background.js"]
+    },
 
-	"options_page": "options.html",
+    "options_page": "options.html",
 
-	"browser_action": {
-		"default_icon": "icon.png"
-	},
+    "browser_action": {
+        "default_icon": "icon.png"
+    },
 
-	"permissions": [
-		"tabs",
-		"storage"
-		]
+    "permissions": [
+        "tabs",
+        "storage"
+    ]
 }
