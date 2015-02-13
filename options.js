@@ -6,7 +6,9 @@ function saveRule(e) {
     var rawtitles = document.getElementById("titles").value;
     var rawurls = document.getElementById("urls").value;
     chrome.storage.sync.set({'rawtitles' : rawtitles , 'rawurls' : rawurls}, function() {
-        // TODO notify user
+        $('#notify').text("Changes saved");
+        $('#notify').show();
+        $('#notify').fadeOut(3000); // 3 seconds
     });
 }
 
@@ -19,6 +21,7 @@ function defaultRule(e) {
 
 // When options page has finished loading
 document.addEventListener('DOMContentLoaded', function () {
+    $('#notify').hide();
     // Read from storage
     chrome.storage.sync.get(["rawtitles","rawurls"],function(rawrules) {
         // When first run, apply default rule
