@@ -1,7 +1,6 @@
 var queryinfo = {
     pinned : false,
     currentWindow : true,
-    title : "placeholder",
 };
 
 function killTabs(placeholder) {
@@ -15,13 +14,13 @@ function killTabs(placeholder) {
         delete queryinfo.title;
         queryinfo.url = urls;
         chrome.tabs.query(queryinfo,doKill);
+        delete queryinfo.url;
     });
 }
 
 function doKill(tabs) {
     var tabid_array = new Array();
     for (i in tabs) {
-        console.log(i);
         tabid_array.push(tabs[i].id);
     }
     chrome.tabs.remove(tabid_array);

@@ -1,7 +1,6 @@
 // default rules here
 var default_title = "* - Google Search";
 var default_url = "";
-// var default_url = "*://www.google.*/search*\n*://*.bing.com/search?q=*";
 
 function saveRule(e) {
     var rawtitles = document.getElementById("titles").value;
