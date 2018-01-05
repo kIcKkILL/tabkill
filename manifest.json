@@ -3,7 +3,7 @@
 
     "name": "TabKill",
     "description": "Kill tabs that match customized rules",
-    "version": "1.0",
+    "version": "1.0.3",
 
     "background": {
         "scripts": ["background.js"]
