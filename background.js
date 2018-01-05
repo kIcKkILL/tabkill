@@ -21,6 +21,14 @@ function firstRun(e) {
     // set default rules
     var default_title = "* - Google Search";
     var default_url = "";
+    chrome.storage.local.get({rawtitles: default_title}, function(data) {
+        chrome.storage.local.set({links: data.rawtitles}, function() {
+        });
+    });
+    chrome.storage.local.get({rawurls: default_url}, function(data) {
+        chrome.storage.local.set({links: data.rawurls}, function() {
+        });
+    });
     chrome.storage.local.set({ 'rawtitles': default_title, 'rawurls': default_url });
 }
 
